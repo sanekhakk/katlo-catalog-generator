@@ -3,7 +3,7 @@
 <div class="max-w-6xl mx-auto">
     <div class="flex justify-between items-center mb-6">
         <h1 class="text-2xl font-bold">My Products</h1>
-        <a href="{% url 'katloapp:product_create' %}" class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition duration-200">
+        <a href="{% url 'katloapp:product_create' %}" class="bg-teal-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition duration-200">
             Add New Product
         </a>
     </div>
@@ -80,7 +80,7 @@
             <h3 class="mt-2 text-sm font-medium text-gray-900">No products</h3>
             <p class="mt-1 text-sm text-gray-500">Get started by creating your first product.</p>
             <div class="mt-6">
-                <a href="{% url 'katloapp:product_create' %}" class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition duration-200">
+                <a href="{% url 'katloapp:product_create' %}" class="bg-teal-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition duration-200">
                     Add Product
                 </a>
             </div>
@@ -88,7 +88,7 @@
     {% endif %}
 
     <div class="mt-6 text-center">
-        <a href="{% url 'katloapp:dashboard' %}" class="text-blue-600 hover:text-blue-800">← Back to Dashboard</a>
+        <a href="{% url 'katloapp:dashboard' %}" class="text-teal-800 hover:text-blue-800">← Back to Dashboard</a>
     </div>
 </div>
 {% endblock %}
