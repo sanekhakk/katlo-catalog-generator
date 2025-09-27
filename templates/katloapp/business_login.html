@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="min-h-[60vh] flex items-center justify-center px-4 pt-5">
+    <div class="w-full max-w-md">
+        <div class="bg-white p-8 rounded-2xl shadow-lg">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-2">Welcome Back!</h2>
+            <p class="text-center text-gray-500 mb-8">Log in to manage your catalog.</p>
+
+            <form method="post" class="space-y-6">
+                {% csrf_token %}
+                <div>
+                    <label for="username" class="block text-sm font-medium text-gray-700">Username</label>
+                    <input type="text" name="username" placeholder="Your username" class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-teal-500 focus:border-teal-500" required>
+                </div>
+                <div>
+                    <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
+                    <input type="password" name="password" placeholder="••••••••" class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-teal-500 focus:border-teal-500" required>
+                </div>
+                <button type="submit" class="w-full bg-teal-600 text-white px-4 py-3 rounded-md hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500 transition duration-200 font-semibold">
+                    Login
+                </button>
+            </form>
+
+            <p class="mt-8 text-sm text-center text-gray-600">
+              Don't have an account yet?
+              <a href="{% url 'katloapp:business_register' %}" class="font-medium text-teal-600 hover:text-teal-500">Register here</a>
+            </p>
+        </div>
+    </div>
+</div>
+{% endblock %}

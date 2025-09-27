@@ -1,0 +1,301 @@
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Not Found: /favicon.ico
+C:\Users\Sanekha\CaromotorsAdmin\CaromotorsAdmin\urls.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Internal Server Error: /
+Traceback (most recent call last):
+  File "C:\Users\Sanekha\CaromotorsAdmin\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Sanekha\CaromotorsAdmin\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Sanekha\CaromotorsAdmin\adminapp\views.py", line 26, in home
+    return render(request, 'adminapp/home.html', context)
+  File "C:\Users\Sanekha\CaromotorsAdmin\venv\Lib\site-packages\django\shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\Sanekha\CaromotorsAdmin\venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\Sanekha\CaromotorsAdmin\venv\Lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Sanekha\CaromotorsAdmin\venv\Lib\site-packages\django\template\backends\django.py", line 33, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Sanekha\CaromotorsAdmin\venv\Lib\site-packages\django\template\engine.py", line 175, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Sanekha\CaromotorsAdmin\venv\Lib\site-packages\django\template\engine.py", line 157, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\Sanekha\CaromotorsAdmin\venv\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\Sanekha\CaromotorsAdmin\venv\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\Users\Sanekha\CaromotorsAdmin\venv\Lib\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Sanekha\CaromotorsAdmin\venv\Lib\site-packages\django\template\base.py", line 200, in compile_nodelist
+    return parser.parse()
+           ~~~~~~~~~~~~^^
+  File "C:\Users\Sanekha\CaromotorsAdmin\venv\Lib\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "C:\Users\Sanekha\CaromotorsAdmin\venv\Lib\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\Sanekha\CaromotorsAdmin\venv\Lib\site-packages\django\template\loader_tags.py", line 293, in do_extends
+    nodelist = parser.parse()
+  File "C:\Users\Sanekha\CaromotorsAdmin\venv\Lib\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "C:\Users\Sanekha\CaromotorsAdmin\venv\Lib\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\Sanekha\CaromotorsAdmin\venv\Lib\site-packages\django\template\loader_tags.py", line 232, in do_block
+    nodelist = parser.parse(("endblock",))
+  File "C:\Users\Sanekha\CaromotorsAdmin\venv\Lib\site-packages\django\template\base.py", line 518, in parse
+    self.unclosed_block_tag(parse_until)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\Sanekha\CaromotorsAdmin\venv\Lib\site-packages\django\template\base.py", line 581, in unclosed_block_tag
+    raise self.error(token, msg)
+django.template.exceptions.TemplateSyntaxError: Unclosed tag on line 5: 'block'. Looking for one of: endblock.
+Not Found: /favicon.ico
+Watching for file changes with StatReloader
+Internal Server Error: /
+Traceback (most recent call last):
+  File "C:\Users\Sanekha\CaromotorsAdmin\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Sanekha\CaromotorsAdmin\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Sanekha\CaromotorsAdmin\adminapp\views.py", line 26, in home
+    return render(request, 'adminapp/home.html', context)
+  File "C:\Users\Sanekha\CaromotorsAdmin\venv\Lib\site-packages\django\shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\Sanekha\CaromotorsAdmin\venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\Sanekha\CaromotorsAdmin\venv\Lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Sanekha\CaromotorsAdmin\venv\Lib\site-packages\django\template\backends\django.py", line 33, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Sanekha\CaromotorsAdmin\venv\Lib\site-packages\django\template\engine.py", line 175, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Sanekha\CaromotorsAdmin\venv\Lib\site-packages\django\template\engine.py", line 157, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\Sanekha\CaromotorsAdmin\venv\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\Sanekha\CaromotorsAdmin\venv\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\Users\Sanekha\CaromotorsAdmin\venv\Lib\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Sanekha\CaromotorsAdmin\venv\Lib\site-packages\django\template\base.py", line 200, in compile_nodelist
+    return parser.parse()
+           ~~~~~~~~~~~~^^
+  File "C:\Users\Sanekha\CaromotorsAdmin\venv\Lib\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "C:\Users\Sanekha\CaromotorsAdmin\venv\Lib\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\Sanekha\CaromotorsAdmin\venv\Lib\site-packages\django\template\loader_tags.py", line 293, in do_extends
+    nodelist = parser.parse()
+  File "C:\Users\Sanekha\CaromotorsAdmin\venv\Lib\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "C:\Users\Sanekha\CaromotorsAdmin\venv\Lib\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\Sanekha\CaromotorsAdmin\venv\Lib\site-packages\django\template\loader_tags.py", line 232, in do_block
+    nodelist = parser.parse(("endblock",))
+  File "C:\Users\Sanekha\CaromotorsAdmin\venv\Lib\site-packages\django\template\base.py", line 518, in parse
+    self.unclosed_block_tag(parse_until)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\Sanekha\CaromotorsAdmin\venv\Lib\site-packages\django\template\base.py", line 581, in unclosed_block_tag
+    raise self.error(token, msg)
+django.template.exceptions.TemplateSyntaxError: Unclosed tag on line 5: 'block'. Looking for one of: endblock.
+Internal Server Error: /catalogues/
+Traceback (most recent call last):
+  File "C:\Users\Sanekha\CaromotorsAdmin\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Sanekha\CaromotorsAdmin\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Sanekha\CaromotorsAdmin\adminapp\views.py", line 66, in catalogue_list
+    return render(request, 'adminapp/catalogue_list.html', context)
+  File "C:\Users\Sanekha\CaromotorsAdmin\venv\Lib\site-packages\django\shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\Sanekha\CaromotorsAdmin\venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\Sanekha\CaromotorsAdmin\venv\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: adminapp/catalogue_list.html
+Internal Server Error: /catalogues/
+Traceback (most recent call last):
+  File "C:\Users\Sanekha\CaromotorsAdmin\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Sanekha\CaromotorsAdmin\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Sanekha\CaromotorsAdmin\adminapp\views.py", line 66, in catalogue_list
+    return render(request, 'adminapp/catalogue_list.html', context)
+  File "C:\Users\Sanekha\CaromotorsAdmin\venv\Lib\site-packages\django\shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\Sanekha\CaromotorsAdmin\venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\Sanekha\CaromotorsAdmin\venv\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: adminapp/catalogue_list.html
+Watching for file changes with StatReloader
+Not Found: /favicon.ico
+Watching for file changes with StatReloader
+Not Found: /favicon.ico
+Watching for file changes with StatReloader
+Not Found: /favicon.ico
+Starting scrape for catalogue: Lucky motor house
+Attempt 1 failed for https://wa.me/c/918178089335: 400 Client Error: Bad Request for url: https://wa.me/c/918178089335
+Attempt 2 failed for https://wa.me/c/918178089335: 400 Client Error: Bad Request for url: https://wa.me/c/918178089335
+Attempt 3 failed for https://wa.me/c/918178089335: 400 Client Error: Bad Request for url: https://wa.me/c/918178089335
+All attempts failed for https://wa.me/c/918178089335
+Starting scrape for catalogue: Lucky motor house
+Attempt 1 failed for https://wa.me/c/918178089335: 400 Client Error: Bad Request for url: https://wa.me/c/918178089335
+Attempt 2 failed for https://wa.me/c/918178089335: 400 Client Error: Bad Request for url: https://wa.me/c/918178089335
+Attempt 3 failed for https://wa.me/c/918178089335: 400 Client Error: Bad Request for url: https://wa.me/c/918178089335
+All attempts failed for https://wa.me/c/918178089335
+C:\Users\Sanekha\CaromotorsAdmin\adminapp\scraper.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\Sanekha\CaromotorsAdmin\adminapp\scraper.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Sanekha\CaromotorsAdmin\adminapp\scraper.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\Sanekha\CaromotorsAdmin\adminapp\scraper.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\Sanekha\CaromotorsAdmin\adminapp\scraper.py changed, reloading.
+Watching for file changes with StatReloader
+Starting scrape for catalogue: Lucky motor house
+URL type detected: generic_business
+Starting scrape for catalogue: pieceofart
+URL type detected: instagram_business
+Starting scrape for catalogue: amazon
+URL type detected: generic_business
+Starting scrape for catalogue: amazon
+URL type detected: generic_business
+HTTP 503 for https://www.amazon.in/storefront?me=A23AODI1X2CEAE&ref_=ssf_share
+Starting scrape for catalogue: meeshoo
+URL type detected: generic_business
+Access forbidden (403) for https://www.meesho.com/DesignerhouseSD?ms=2
+Starting scrape for catalogue: delhi public library
+URL type detected: generic_business
+Added new product: Forgot your account info? Never had an account?
+Scrape completed for delhi public library: {'added': 1, 'updated': 0, 'removed': 0}
+Internal Server Error: /products/
+Traceback (most recent call last):
+  File "C:\Users\Sanekha\CaromotorsAdmin\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Sanekha\CaromotorsAdmin\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Sanekha\CaromotorsAdmin\adminapp\views.py", line 193, in product_list
+    return render(request, 'adminapp/product_list.html', context)
+  File "C:\Users\Sanekha\CaromotorsAdmin\venv\Lib\site-packages\django\shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\Sanekha\CaromotorsAdmin\venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\Sanekha\CaromotorsAdmin\venv\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: adminapp/product_list.html
+Internal Server Error: /products/
+Traceback (most recent call last):
+  File "C:\Users\Sanekha\CaromotorsAdmin\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Sanekha\CaromotorsAdmin\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Sanekha\CaromotorsAdmin\adminapp\views.py", line 193, in product_list
+    return render(request, 'adminapp/product_list.html', context)
+  File "C:\Users\Sanekha\CaromotorsAdmin\venv\Lib\site-packages\django\shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\Sanekha\CaromotorsAdmin\venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\Sanekha\CaromotorsAdmin\venv\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: adminapp/product_list.html
+Internal Server Error: /logs/
+Traceback (most recent call last):
+  File "C:\Users\Sanekha\CaromotorsAdmin\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Sanekha\CaromotorsAdmin\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Sanekha\CaromotorsAdmin\adminapp\views.py", line 312, in scrape_logs
+    return render(request, 'adminapp/scrape_logs.html', context)
+  File "C:\Users\Sanekha\CaromotorsAdmin\venv\Lib\site-packages\django\shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\Sanekha\CaromotorsAdmin\venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\Sanekha\CaromotorsAdmin\venv\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: adminapp/scrape_logs.html
+Internal Server Error: /products/458cb248-7b55-4b89-a4e4-973cf706927a/
+Traceback (most recent call last):
+  File "C:\Users\Sanekha\CaromotorsAdmin\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Sanekha\CaromotorsAdmin\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Sanekha\CaromotorsAdmin\adminapp\views.py", line 216, in product_detail
+    return render(request, 'adminapp/product_detail.html', context)
+  File "C:\Users\Sanekha\CaromotorsAdmin\venv\Lib\site-packages\django\shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\Sanekha\CaromotorsAdmin\venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\Sanekha\CaromotorsAdmin\venv\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: adminapp/product_detail.html
+Internal Server Error: /products/
+Traceback (most recent call last):
+  File "C:\Users\Sanekha\CaromotorsAdmin\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Sanekha\CaromotorsAdmin\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Sanekha\CaromotorsAdmin\adminapp\views.py", line 193, in product_list
+    return render(request, 'adminapp/product_list.html', context)
+  File "C:\Users\Sanekha\CaromotorsAdmin\venv\Lib\site-packages\django\shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\Sanekha\CaromotorsAdmin\venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\Sanekha\CaromotorsAdmin\venv\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: adminapp/product_list.html
+Starting scrape for catalogue: meesho
+URL type detected: generic_business
+Access forbidden (403) for https://www.meesho.com/
+Internal Server Error: /catalogues/
+Traceback (most recent call last):
+  File "C:\Users\Sanekha\CaromotorsAdmin\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Sanekha\CaromotorsAdmin\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Sanekha\CaromotorsAdmin\adminapp\views.py", line 66, in catalogue_list
+    return render(request, 'adminapp/catalogue_list.html', context)
+  File "C:\Users\Sanekha\CaromotorsAdmin\venv\Lib\site-packages\django\shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\Sanekha\CaromotorsAdmin\venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\Sanekha\CaromotorsAdmin\venv\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: adminapp/catalogue_list.html
+Internal Server Error: /logs/
+Traceback (most recent call last):
+  File "C:\Users\Sanekha\CaromotorsAdmin\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Sanekha\CaromotorsAdmin\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Sanekha\CaromotorsAdmin\adminapp\views.py", line 312, in scrape_logs
+    return render(request, 'adminapp/scrape_logs.html', context)
+  File "C:\Users\Sanekha\CaromotorsAdmin\venv\Lib\site-packages\django\shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\Sanekha\CaromotorsAdmin\venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\Sanekha\CaromotorsAdmin\venv\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: adminapp/scrape_logs.html
+Starting scrape for catalogue: facebook
+URL type detected: business_facebook

@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="min-h-[60vh] flex items-center justify-center px-4 pt-5">
+    <div class="w-full max-w-md">
+        <div class="bg-white p-8 rounded-2xl shadow-lg">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-2">Create Your Account</h2>
+            <p class="text-center text-gray-500 mb-8">Join Katlo and start sharing your products.</p>
+
+            <form method="post" class="space-y-4">
+                {% csrf_token %}
+                
+                <div>
+                    <label for="{{ form.username.id_for_label }}" class="block text-sm font-medium text-gray-700">Username</label>
+                    {{ form.username }}
+                    {% if form.username.help_text %}
+                        <p class="text-xs text-gray-500 mt-1">{{ form.username.help_text|safe }}</p>
+                    {% endif %}
+                    {{ form.username.errors }}
+                </div>
+                
+                <div>
+                    <label for="{{ form.password1.id_for_label }}" class="block text-sm font-medium text-gray-700">Password</label>
+                    {{ form.password1 }}
+                    {{ form.password1.errors }}
+                </div>
+                
+                <div>
+                    <label for="{{ form.password2.id_for_label }}" class="block text-sm font-medium text-gray-700">Confirm Password</label>
+                    {{ form.password2 }}
+                    {{ form.password2.errors }}
+                </div>
+
+                <style>
+                    form input[type="text"], form input[type="password"] {
+                        margin-top: 0.25rem;
+                        display: block;
+                        width: 100%;
+                        padding: 0.75rem 1rem;
+                        border: 1px solid #d1d5db; 
+                        border-radius: 0.375rem; 
+                        box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05); 
+                    }
+                    form input[type="text"]:focus, form input[type="password"]:focus {
+                        outline: none;
+                        --tw-ring-color: #14b8a6;
+                        border-color: #0d9488; 
+                        box-shadow: 0 0 0 2px var(--tw-ring-color);
+                    }
+                    .errorlist {
+                        list-style-type: none;
+                        padding: 0;
+                        margin: 0.5rem 0 0 0;
+                        color: #dc2626;
+                        font-size: 0.875rem;
+                    }
+                </style>
+                
+                <button type="submit" class="w-full bg-teal-600 text-white px-4 py-3 rounded-md hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500 transition duration-200 font-semibold !mt-6">
+                    Register
+                </button>
+            </form>
+            
+            <p class="mt-8 text-sm text-center text-gray-600">
+              Already have an account?
+              <a href="{% url 'katloapp:business_login' %}" class="font-medium text-teal-600 hover:text-teal-500">Login here</a>
+            </p>
+        </div>
+    </div>
+</div>
+{% endblock %}

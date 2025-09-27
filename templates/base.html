@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Katlo – Smart Links. Instant Sales.</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet">
+
+  <style>
+    .font-poppins {
+      font-family: 'Poppins', sans-serif;
+    }
+    #side-menu {
+        transition: transform 0.3s ease-in-out;
+    }
+  </style>
+
+</head>
+<body class="bg-gray-100 text-gray-900">
+
+  <header class="bg-white shadow-sm sticky top-0 z-40">
+    <div class="max-w-5xl mx-auto px-4 py-4 flex items-center justify-between">
+      <a href="{% url 'katloapp:public_home' %}" class="text-2xl font-bold text-teal-600 font-playfair">Katlo</a>
+      
+      <nav class="hidden md:flex items-center space-x-3">
+        <a href="{% url 'katloapp:public_home' %}" class="text-sm text-gray-600 hover:text-teal-600 px-3 py-1 rounded">Home</a>
+        <a href="{% url 'katloapp:catalog_list' %}" class="text-sm text-gray-600 hover:text-teal-600 px-3 py-1 rounded">Catalogs</a>
+        
+        {% if user.is_authenticated %}
+          <a href="{% url 'katloapp:dashboard' %}" class="text-sm text-teal-600 hover:text-teal-800 px-3 py-1 rounded font-medium">Dashboard</a>
+          {% if user.is_superuser %}
+            <a href="{% url 'admin:index' %}" class="text-sm text-purple-600 hover:text-purple-800 px-3 py-1 rounded">Admin</a>
+          {% endif %}
+          <form method="post" action="{% url 'katloapp:custom_logout' %}" class="inline">
+            {% csrf_token %}
+            <button type="submit" class="text-sm text-red-600 hover:text-red-800 bg-transparent border border-red-300 px-3 py-1 rounded hover:bg-red-50 transition duration-200">
+              Logout
+            </button>
+          </form>
+        {% else %}
+          <a href="{% url 'katloapp:business_login' %}" class="text-sm text-gray-600 hover:text-gray-900 px-3 py-1 rounded transition duration-200">Business Login</a>
+          <a href="{% url 'katloapp:business_register' %}" class="text-sm text-white bg-teal-600 hover:bg-teal-700 px-4 py-2 rounded-md transition duration-200">Register</a>
+        {% endif %}
+      </nav>
+
+      <div class="md:hidden">
+        <button id="open-menu-button" class="text-gray-600 hover:text-teal-600 focus:outline-none">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <div id="menu-overlay" class="hidden fixed inset-0 bg-black bg-opacity-50 z-40"></div>
+  <div id="side-menu" class="fixed top-0 right-0 h-full w-64 bg-white shadow-xl z-50 transform translate-x-full">
+      <div class="p-4 flex flex-col h-full">
+        <div class="flex justify-between items-center mb-8">
+            <a href="{% url 'katloapp:public_home' %}" class="text-xl font-bold text-teal-600 font-poppins">Katlo</a>
+            
+            <button id="close-menu-button" class="text-gray-500 hover:text-teal-600">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </div>
+        <nav class="flex flex-col space-y-4">
+            <a href="{% url 'katloapp:catalog_list' %}" class="text-gray-700 hover:bg-gray-100 p-2 rounded">Catalogs</a>
+            {% if user.is_authenticated %}
+              <a href="{% url 'katloapp:dashboard' %}" class="text-gray-700 hover:bg-gray-100 p-2 rounded">Dashboard</a>
+              {% if user.is_superuser %}
+                <a href="{% url 'admin:index' %}" class="text-gray-700 hover:bg-gray-100 p-2 rounded">Admin</a>
+              {% endif %}
+              <a href="{% url 'katloapp:custom_logout' %}" class="text-red-600 hover:bg-red-50 p-2 rounded mt-auto">Logout</a>
+            {% else %}
+              <a href="{% url 'katloapp:business_login' %}" class="text-gray-700 hover:bg-gray-100 p-2 rounded">Business Login</a>
+              <a href="{% url 'katloapp:business_register' %}" class="text-white bg-teal-600 hover:bg-teal-700 p-2 rounded text-center">Register</a>
+            {% endif %}
+        </nav>
+      </div>
+  </div>
+  <main class="max-w-5xl mx-auto p-4">
+    {% if messages %}
+      <div class="mb-4 space-y-2">
+        {% for message in messages %}
+          <div class="alert alert-{{ message.tags }} p-3 rounded-md flex items-center text-sm
+            {% if message.tags == 'error' %}bg-red-50 text-red-800 border border-red-200
+            {% elif message.tags == 'success' %}bg-emerald-50 text-emerald-800 border border-emerald-200
+            {% elif message.tags == 'info' %}bg-teal-50 text-teal-800 border border-teal-200
+            {% elif message.tags == 'warning' %}bg-yellow-50 text-yellow-800 border border-yellow-200
+            {% else %}bg-gray-100 text-gray-800 border border-gray-300{% endif %}">
+            <div class="flex-shrink-0 mr-2">
+                {% if message.tags == 'error' %}
+                  <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd" /></svg>
+                {% elif message.tags == 'success' %}
+                  <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>
+                {% else %} {# Info & Warning #}
+                  <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd" /></svg>
+                {% endif %}
+            </div>
+            <span>{{ message }}</span>
+            <button onclick="this.parentElement.remove()" class="ml-auto pl-3">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+          </div>
+        {% endfor %}
+      </div>
+    {% endif %}
+
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer class="mt-16 py-8 text-center text-sm text-gray-500 border-t border-gray-200">
+    <div class="max-w-5xl mx-auto px-4">
+      <p>Katlo &middot; Smart Links. Instant Sales.</p>
+      <p class="mt-2 text-xs text-gray-400">Build beautiful WhatsApp catalogs that convert visitors into customers.</p>
+    </div>
+  </footer>
+
+  <script>
+    const openMenuButton = document.getElementById('open-menu-button');
+    const closeMenuButton = document.getElementById('close-menu-button');
+    const sideMenu = document.getElementById('side-menu');
+    const menuOverlay = document.getElementById('menu-overlay');
+
+    function openMenu() {
+        sideMenu.classList.remove('translate-x-full');
+        menuOverlay.classList.remove('hidden');
+    }
+
+    function closeMenu() {
+        sideMenu.classList.add('translate-x-full');
+        menuOverlay.classList.add('hidden');
+    }
+
+    openMenuButton.addEventListener('click', openMenu);
+    closeMenuButton.addEventListener('click', closeMenu);
+    menuOverlay.addEventListener('click', closeMenu);
+  </script>
+
+</body>
+</html>

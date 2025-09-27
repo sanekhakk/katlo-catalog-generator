@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="bg-gradient-to-br from-teal-500 to-cyan-600 text-white rounded-lg p-8 mb-8">
+    <div class="max-w-4xl mx-auto text-center">
+        <h1 class="text-4xl md:text-5xl font-bold mb-4">
+            Smart Links. Instant Sales.
+        </h1>
+        <p class="text-xl mb-8 text-cyan-100">
+            Create beautiful WhatsApp catalogs that convert visitors into customers. 
+            Share your products with QR codes and instant messaging.
+        </p>
+        <div class="space-x-4">
+            <a href="{% url 'katloapp:business_register' %}" class="bg-white text-teal-600 font-semibold px-8 py-3 rounded-lg hover:bg-gray-100 transition duration-200">
+                Start Free
+            </a>
+            <a href="{% url 'katloapp:catalog_list' %}" class="border-2 border-white text-white font-semibold px-8 py-3 rounded-lg hover:bg-white hover:text-teal-600 transition duration-200">
+                View Catalogs
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+    <div class="bg-white rounded-lg shadow-md p-6 text-center">
+        <h3 class="text-4xl font-bold text-teal-600">{{ total_catalogues }}</h3>
+        <p class="text-gray-600 mt-2">Public Catalogs</p>
+    </div>
+    <div class="bg-white rounded-lg shadow-md p-6 text-center">
+        <h3 class="text-4xl font-bold text-cyan-600">{{ total_products }}</h3>
+        <p class="text-gray-600 mt-2">Products Available</p>
+    </div>
+</div>
+
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+    <div class="text-center p-6">
+        <div class="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg class="w-8 h-8 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+            </svg>
+        </div>
+        <h3 class="text-xl font-semibold mb-2">WhatsApp Integration</h3>
+        <p class="text-gray-600">Direct connection to WhatsApp for instant customer communication and order management.</p>
+    </div>
+
+    <div class="text-center p-6">
+        <div class="w-16 h-16 bg-sky-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg class="w-8 h-8 text-sky-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z"></path>
+            </svg>
+        </div>
+        <h3 class="text-xl font-semibold mb-2">Easy Sharing</h3>
+        <p class="text-gray-600">Generate QR codes and shareable links for your catalog. Perfect for social media and print.</p>
+    </div>
+
+    <div class="text-center p-6">
+        <div class="w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg class="w-8 h-8 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+            </svg>
+        </div>
+        <h3 class="text-xl font-semibold mb-2">Analytics Ready</h3>
+        <p class="text-gray-600">Track your catalog performance and customer engagement with built-in analytics.</p>
+    </div>
+</div>
+
+<div class="bg-white rounded-lg p-8 mb-12">
+    <h2 class="text-3xl font-bold text-center mb-8">How It Works</h2>
+    
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div class="text-center">
+            <div class="w-12 h-12 bg-teal-600 text-white rounded-full flex items-center justify-center mx-auto mb-4 font-bold text-lg">1</div>
+            <h4 class="font-semibold mb-2">Sign Up</h4>
+            <p class="text-gray-600 text-sm">Create your free business account in seconds</p>
+        </div>
+        
+        <div class="text-center">
+            <div class="w-12 h-12 bg-teal-600 text-white rounded-full flex items-center justify-center mx-auto mb-4 font-bold text-lg">2</div>
+            <h4 class="font-semibold mb-2">Add Products</h4>
+            <p class="text-gray-600 text-sm">Upload your products with images and descriptions</p>
+        </div>
+        
+        <div class="text-center">
+            <div class="w-12 h-12 bg-teal-600 text-white rounded-full flex items-center justify-center mx-auto mb-4 font-bold text-lg">3</div>
+            <h4 class="font-semibold mb-2">Share & Promote</h4>
+            <p class="text-gray-600 text-sm">Get QR codes and links to share everywhere</p>
+        </div>
+        
+        <div class="text-center">
+            <div class="w-12 h-12 bg-teal-600 text-white rounded-full flex items-center justify-center mx-auto mb-4 font-bold text-lg">4</div>
+            <h4 class="font-semibold mb-2">Sell More</h4>
+            <p class="text-gray-600 text-sm">Customers contact you directly via WhatsApp</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,215 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="max-w-6xl mx-auto">
+    <div class="mb-8">
+        <h1 class="text-3xl font-bold text-gray-900">Welcome, {{ request.user.username }}</h1>
+        <p class="text-gray-600 mt-2">Manage your WhatsApp catalog and grow your business</p>
+    </div>
+
+    <div class="bg-white rounded-lg shadow-md p-6 mb-8">
+        <div class="flex justify-between items-start mb-4">
+            <div>
+                <h2 class="text-xl font-semibold text-gray-900">{{ business.name }}</h2>
+                {% if business.description %}
+                    <p class="text-gray-600 mt-1">{{ business.description }}</p>
+                {% endif %}
+                <div class="flex items-center mt-2 text-sm text-gray-500">
+                    {% if business.city %}
+                        <span>📍 {{ business.city }}</span>
+                    {% endif %}
+                    {% if business.whatsapp_number %}
+                        <span class="ml-4">📱 {{ business.whatsapp_number }}</span>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="text-right">
+                <a href="{% url 'katloapp:business_edit' %}" class="inline-flex items-center bg-teal-600 text-white px-4 py-2 rounded-md hover:bg-teal-700 transition duration-200">
+                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
+                    </svg>
+                    Edit Business Info
+                </a>
+            </div>
+        </div>
+
+        {% if business.whatsapp_number and business.public %}
+            <div class="mt-6 p-4 bg-gray-50 rounded-lg">
+                <h3 class="font-semibold text-gray-800 mb-3">Your Catalog Links</h3>
+                <div class="space-y-3">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <label class="text-sm font-medium text-gray-700">Public Catalog URL:</label>
+                            <div class="text-sm text-teal-600 break-all">{{ public_url }}</div>
+                        </div>
+                        <button onclick="copyToClipboard('{{ public_url }}')" class="ml-2 text-gray-500 hover:text-teal-600">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="flex space-x-3">
+                        <a href="{{ business.get_public_url }}" target="_blank" class="bg-gray-700 text-white px-4 py-2 rounded-md hover:bg-gray-800 text-sm transition duration-200">
+                            View Catalog
+                        </a>
+                        <a href="{% url 'katloapp:download_qr' business.slug %}" class="bg-emerald-600 text-white px-4 py-2 rounded-md hover:bg-emerald-700 text-sm transition duration-200">
+                            Download QR Code
+                        </a>
+                    </div>
+                </div>
+            </div>
+        {% elif not business.whatsapp_number %}
+            <div class="mt-6 p-4 bg-yellow-50 rounded-lg border border-yellow-200 text-yellow-800">
+                <p>
+                    <svg class="w-5 h-5 inline mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z"></path>
+                    </svg>
+                    Add your WhatsApp number to enable catalog sharing
+                </p>
+            </div>
+        {% elif not business.public %}
+            <div class="mt-6 p-4 bg-gray-50 rounded-lg">
+                <p class="text-gray-600">
+                    <svg class="w-5 h-5 inline mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.878 9.878L3 3m6.878 6.878L12 12"></path>
+                    </svg>
+                    Your catalog is private - make it public to share with customers
+                </p>
+            </div>
+        {% endif %}
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+        <div class="bg-white rounded-lg shadow-md p-6">
+            <div class="flex items-center">
+                <div class="p-3 rounded-full bg-teal-100">
+                    <svg class="w-6 h-6 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10"></path>
+                    </svg>
+                </div>
+                <div class="ml-4">
+                    <h3 class="text-2xl font-bold text-gray-900">{{ products.count }}</h3>
+                    <p class="text-gray-600">Total Products</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-md p-6">
+            <div class="flex items-center">
+                <div class="p-3 rounded-full bg-emerald-100">
+                    <svg class="w-6 h-6 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                </div>
+                <div class="ml-4">
+                    <h3 class="text-2xl font-bold text-gray-900">{{ products|length }}</h3>
+                    <p class="text-gray-600">Active Products</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-md p-6">
+            <div class="flex items-center">
+                <div class="p-3 rounded-full bg-gray-200">
+                    <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                    </svg>
+                </div>
+                <div class="ml-4">
+                    <h3 class="text-2xl font-bold text-gray-900">
+                        {% if business.public %}Public{% else %}Private{% endif %}
+                    </h3>
+                    <p class="text-gray-600">Catalog Status</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="bg-white rounded-lg shadow-md">
+        <div class="px-6 py-4 border-b border-gray-200">
+            <div class="flex justify-between items-center">
+                <h2 class="text-xl font-semibold text-gray-900">Your Products</h2>
+                <div class="space-x-2">
+                    <a href="{% url 'katloapp:product_create' %}" class="bg-teal-600 text-white px-4 py-2 rounded-md hover:bg-teal-700 transition duration-200">
+                        Add Product
+                    </a>
+                    <a href="{% url 'katloapp:product_list' %}" class="bg-gray-200 text-gray-700 px-4 py-2 rounded-md hover:bg-gray-300 transition duration-200">
+                        View All
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        {% if products %}
+            <div class="p-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {% for product in products|slice:":6" %}
+                        <div class="border border-gray-200 rounded-lg p-4 hover:shadow-md transition duration-200">
+                            {% if product.image %}
+                                <img src="{{ product.image.url }}" alt="{{ product.name }}" class="w-full h-32 object-cover rounded-md mb-3">
+                            {% else %}
+                                <div class="w-full h-32 bg-gray-200 rounded-md mb-3 flex items-center justify-center">
+                                    <svg class="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                                    </svg>
+                                </div>
+                            {% endif %}
+                            
+                            <h3 class="font-medium text-gray-900 mb-1">{{ product.name }}</h3>
+                            {% if product.price %}
+                                <p class="text-teal-600 font-semibold mb-2">₹{{ product.price }}</p>
+                            {% endif %}
+                            
+                            <div class="flex justify-between items-center text-sm">
+                                <span class="{% if product.active %}text-emerald-600{% else %}text-red-600{% endif %}">
+                                    {% if product.active %}Active{% else %}Inactive{% endif %}
+                                </span>
+                                <div class="space-x-2">
+                                    <a href="{% url 'katloapp:product_edit' product.pk %}" class="text-gray-600 hover:text-teal-600">Edit</a>
+                                    <a href="{% url 'katloapp:product_delete' product.pk %}" class="text-red-600 hover:text-red-800">Delete</a>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+
+                {% if products.count > 6 %}
+                    <div class="mt-6 text-center">
+                        <a href="{% url 'katloapp:product_list' %}" class="text-teal-600 hover:text-teal-800">
+                            View all {{ products.count }} products →
+                        </a>
+                    </div>
+                {% endif %}
+            </div>
+        {% else %}
+            <div class="p-12 text-center">
+                <svg class="mx-auto h-12 w-12 text-gray-400 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10"></path>
+                </svg>
+                <h3 class="text-lg font-medium text-gray-900 mb-2">No products yet</h3>
+                <p class="text-gray-600 mb-6">Start by adding your first product to create your catalog.</p>
+                <a href="{% url 'katloapp:product_create' %}" class="bg-teal-600 text-white px-6 py-3 rounded-lg hover:bg-teal-700 transition duration-200">
+                    Add Your First Product
+                </a>
+            </div>
+        {% endif %}
+    </div>
+</div>
+
+<script>
+function copyToClipboard(text) {
+    navigator.clipboard.writeText(text).then(function() {
+        // Show success message
+        const toast = document.createElement('div');
+        toast.className = 'fixed top-4 right-4 bg-emerald-500 text-white px-4 py-2 rounded-md shadow-lg z-50';
+        toast.textContent = 'URL copied to clipboard!';
+        document.body.appendChild(toast);
+        setTimeout(() => {
+            document.body.removeChild(toast);
+        }, 3000);
+    }).catch(function(err) {
+        console.error('Could not copy text: ', err);
+    });
+}
+</script>
+{% endblock %}
